@@ -4,16 +4,21 @@
   "description": "This is a node js real time chat app built with web socket",
   "main": "package.js",
   "scripts": {
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "chatapp",
+    "web-socket"
+  ],
+  "author": "Moses",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.2"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "ws": "^8.15.1"
   }
 }
