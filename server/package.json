@@ -2,9 +2,10 @@
   "name": "chatapp",
   "version": "1.0.0",
   "description": "This is a node js real time chat app built with web socket",
-  "main": "package.js",
+  "type": "module",
   "scripts": {
-    "start": "nodemon index",
+    "start": "node .",
+    "dev": "nodemon .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
