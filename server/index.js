@@ -28,8 +28,27 @@ const io = new Server(expressServer, {
 io.on("connection", (socket) => {
   console.log(`User ${socket.id} connected`);
 
+  // Upon connection - only to user (directly to the user)
+  socket.emit("message", "Welcome to Chat App");
+
+  // Upon connection - to all others except the user
+  socket.broadcast.emit("message", `User ${socket.id.substring(0, 5)} joined`);
+  // Listening for a messages event
   socket.on("message", (data) => {
     console.log(data);
     io.emit("message", `${socket.id.substring(0, 5)}: ${data}`);
+  });
+
+  // When user disconnects - to all others
+  socket.on("disconnect", () => {
+    // sending to all others except the person that disconnected
+    socket.broadcast.emit(
+      "message",
+      `${socket.id.substring(0, 5)} disconnected`
+    );
+  });
+  // listen for activity
+  socket.on("activity", (name) => {
+    socket.broadcast.emit("activity", name);
   });
 });
